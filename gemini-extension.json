@@ -1,0 +1,24 @@
+{
+  "name": "polytweaks",
+  "version": "0.1.0",
+  "description": "Save, version, review and share 3D models with your Polytweaks account.",
+  "contextFileName": "GEMINI.md",
+  "mcpServers": {
+    "polytweaks": {
+      "httpUrl": "https://api.polytweaks.com/gemini/mcp",
+      "trust": false,
+      "oauth": {
+        "enabled": true,
+        "clientId": "polytweaks-gemini",
+        "redirectUri": "http://127.0.0.1:8787/oauth/callback",
+        "scopes": [
+          "models:read",
+          "models:write",
+          "comments:read",
+          "comments:write",
+          "shares:write"
+        ]
+      }
+    }
+  }
+}
