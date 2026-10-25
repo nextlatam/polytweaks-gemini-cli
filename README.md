@@ -2,9 +2,9 @@
 
 Work with your Polytweaks 3D model library from Gemini CLI: find models, preserve versions, retrieve sources, review feedback and create requested viewer, review or AR links. Each user signs in to their own Polytweaks account. The extension includes a workflow skill and a remote MCP connection.
 
-This public repository contains a release candidate. Production deployment, client registration and a real Gemini CLI connection must be verified before general use. It is not yet submitted for Gemini CLI gallery discovery. Installation alone does not establish server availability.
+The Polytweaks backend is live. On 2026-10-25 UTC, a dedicated HTTP runner completed real browser OAuth consent and successfully exercised all ten MCP tools with the registered public client. A real Gemini CLI session remains unverified: the owner deferred that test after official individual Google sign-in was refused. This package is not submitted for Gemini CLI gallery discovery, and backend acceptance does not imply gallery approval or native CLI compatibility.
 
-[Gemini setup guide](https://www.polytweaks.com/help/gemini/) · [Public package source](https://github.com/nextlatam/polytweaks-gemini-cli). The setup page is part of the candidate service release and may not be available until that release is published.
+[Gemini setup guide](https://www.polytweaks.com/help/gemini/) · [Public package source](https://github.com/nextlatam/polytweaks-gemini-cli).
 
 ## Install and connect
 
@@ -14,7 +14,7 @@ For a local review, extract this archive to a directory named `polytweaks`, then
 gemini extensions install /absolute/path/to/polytweaks
 ```
 
-For the public candidate source, use `gemini extensions install https://github.com/nextlatam/polytweaks-gemini-cli`. Restart the CLI session, inspect `/extensions list` and `/skills list`, then run `/mcp auth polytweaks` after the service release is available. Sign in to Polytweaks in the browser and review the permissions. Ask: **“Use Polytweaks to list my models.”** An empty library is a valid connection.
+For the public candidate source, use `gemini extensions install https://github.com/nextlatam/polytweaks-gemini-cli`. With a currently supported Gemini CLI authentication option, restart the CLI session, inspect `/extensions list` and `/skills list`, then run `/mcp auth polytweaks`. Sign in to Polytweaks in the browser and review the permissions. Ask: **“Use Polytweaks to list my models.”** An empty library is a valid connection. These are installation instructions; the native CLI end-to-end test remains deferred.
 
 The extension's public OAuth profile is:
 
@@ -27,6 +27,12 @@ The extension's public OAuth profile is:
 The callback is a local browser return address, not a public service. Its fixed port must be available. No Polytweaks API key, shared secret or service credential is required. Your own Gemini CLI authentication and usage allowance are separate.
 
 Google ended consumer Gemini CLI “Login with Google” access on June 18, 2026; check your current supported CLI account/provider. This extension is for Gemini CLI, not the Gemini chat app or Antigravity. [Google account availability](https://developers.google.com/gemini-code-assist/docs/deprecations/code-assist-individuals).
+
+## What backend acceptance verified
+
+The live HTTP runner checked OAuth discovery, callback state/issuer, S256 PKCE and all ten tools. One controlled cube retained exactly three versions; replaying the first save with identical inputs created no duplicate. It checked private model/file access, comments, five-minute view/review links with downloads disabled, and a five-minute AR link. Gemini credentials were rejected by the Claude resource; refresh invalidated the previous access token, and revocation was followed by HTTP 401.
+
+The test used public controlled GLB fixtures. It did not prove native local-file/chat-attachment transfer, original Blender or authored USDZ transfer, QR rendering, device AR, or an in-host Gemini session. Missing companions and the iOS AR limitation were reported explicitly. Tokens and capability URLs were excluded from the recorded evidence. Installation and skill discovery in the official CLI were checked separately from these backend calls.
 
 ## Models and files
 
